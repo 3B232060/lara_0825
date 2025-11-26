@@ -14,13 +14,25 @@ use App\Models\Post;
 |
 */
 
-Route::get('//creat-post-save', function () {
+//Route::get('//creat-post-save', function () {
+//
+//    $post = new Post();
+//    $post->title = 'test title';
+//    $post->content = 'test content';
+//    $post->is_feature = false;
+//    $post->save();
+//
+//    return 'save() 新增成功！';
+//});
 
-    $post = new Post();
-    $post->title = 'test title';
-    $post->content = 'test content';
-    $post->is_feature = false;
-    $post->save();
+Route::get('/create-post-create', function () {
 
-    return 'save() 新增成功！';
+    // 使用 create() 方法新增資料
+    Post::create([
+        'title' => 'test title',
+        'content' => 'test content',
+        'is_feature' => false,
+    ]);
+
+    return 'create() 新增成功！';
 });
