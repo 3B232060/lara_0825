@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('//creat-post-save', function () {
+
+    $post = new Post();
+    $post->title = 'test title';
+    $post->content = 'test content';
+    $post->is_feature = false;
+    $post->save();
+
+    return 'save() 新增成功！';
 });
