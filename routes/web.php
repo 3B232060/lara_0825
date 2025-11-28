@@ -37,17 +37,32 @@ use App\Models\Post;
 //    return 'create() 新增成功！';
 //});
 
-Route::get('/find-post', function () {
+//Route::get('/find-post', function () {
+//
+//    $post = Post::find(1); // 找 id=1 的貼文
+//
+//    if (!$post) {
+//        return '找不到這筆貼文';
+//    }
+//
+//    echo '標題：'.$post->title.'<br>';
+//    echo '內容：'.$post->content.'<br>';
+//    echo '張貼時間：'.$post->created_at.'<br>';
+//
+//    dd($post); // 顯示完整貼文資訊並停止
+//});
 
-    $post = Post::find(1); // 找 id=1 的貼文
+Route::get('/show-all-posts', function () {
 
-    if (!$post) {
-        return '找不到這筆貼文';
+    $posts = Post::all(); // 撈出所有貼文
+
+    foreach ($posts as $post){
+        echo '編號：'.$post->id.'<br>';
+        echo '標題：'.$post->title.'<br>';
+        echo '內容：'.$post->content.'<br>';
+        echo '張貼時間：'.$post->created_at.'<br>';
+        echo '------------------------------'.'<br>';
     }
 
-    echo '標題：'.$post->title.'<br>';
-    echo '內容：'.$post->content.'<br>';
-    echo '張貼時間：'.$post->created_at.'<br>';
-
-    dd($post); // 顯示完整貼文資訊並停止
+    dd($posts);  // dump 所有資料並停止程式
 });
