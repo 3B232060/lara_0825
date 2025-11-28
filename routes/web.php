@@ -25,14 +25,29 @@ use App\Models\Post;
 //    return 'save() 新增成功！';
 //});
 
-Route::get('/create-post-create', function () {
+//Route::get('/create-post-create', function () {
+//
+//    // 使用 create() 方法新增資料
+//    Post::create([
+//        'title' => 'test title',
+//        'content' => 'test content',
+//        'is_feature' => false,
+//    ]);
+//
+//    return 'create() 新增成功！';
+//});
 
-    // 使用 create() 方法新增資料
-    Post::create([
-        'title' => 'test title',
-        'content' => 'test content',
-        'is_feature' => false,
-    ]);
+Route::get('/find-post', function () {
 
-    return 'create() 新增成功！';
+    $post = Post::find(1); // 找 id=1 的貼文
+
+    if (!$post) {
+        return '找不到這筆貼文';
+    }
+
+    echo '標題：'.$post->title.'<br>';
+    echo '內容：'.$post->content.'<br>';
+    echo '張貼時間：'.$post->created_at.'<br>';
+
+    dd($post); // 顯示完整貼文資訊並停止
 });
