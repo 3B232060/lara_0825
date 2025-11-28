@@ -66,3 +66,12 @@ Route::get('/show-all-posts', function () {
 
     dd($posts);  // dump 所有資料並停止程式
 });
+
+Route::get('/post-filter', function () {
+
+    $posts = Post::where('id', '<', 10)
+        ->orderBy('id', 'DESC')
+        ->get();
+
+    dd($posts);
+});
