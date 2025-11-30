@@ -157,3 +157,18 @@ Route::get('/test-post-comments', function () {
     }
 
 });
+
+// 從留言，找到所屬的貼文
+Route::get('/test-comment-post', function () {
+
+    $comment = Comment::find(6);
+
+    echo $comment->content . '<br>';
+    echo '*************************<br>';
+
+    $post = $comment->post()->first();
+
+    echo $post->id . '<br>';
+    echo $post->title . '<br>';
+    echo $post->content . '<br>';
+});
