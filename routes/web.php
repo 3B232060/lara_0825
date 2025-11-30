@@ -126,9 +126,16 @@ Route::get('/show-all-posts', function () {
 //
 //});
 
-Route::get('/find-4', function () {
+//Route::get('/find-4', function () {
+//
+//    $fourthPost = Post::find(4);
+//    dd($fourthPost);
+//
+//});
 
-    $fourthPost = Post::find(4);
-    dd($fourthPost);
+Route::get('/last-post', function () {
+
+    $lastPost = Post::orderBy('id', 'DESC')->first();
+    dd($lastPost);
 
 });
