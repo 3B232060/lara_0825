@@ -98,18 +98,23 @@ Route::get('/show-all-posts', function () {
 //    return '使用 save() 更新成功！';
 //});
 
-Route::get('/delete-post', function () {
-    // 1.delete()：刪除單筆資料
-    $post = \App\Models\Post::find(1);
-    if ($post) {
-        $post->delete();
-    }
+//Route::get('/delete-post', function () {
+//    // 1.delete()：刪除單筆資料
+//    $post = \App\Models\Post::find(1);
+//    if ($post) {
+//        $post->delete();
+//    }
+//
+//    // 3.destroy()：直接刪除某個 id 的資料
+//    \App\Models\Post::destroy(2);
+//
+//    // 5.destroy()：刪除多筆資料
+//    \App\Models\Post::destroy([3, 5, 7]);
+//
+//    return '已刪除，在 MySQL 查看結果';
+//});
 
-    // 3.destroy()：直接刪除某個 id 的資料
-    \App\Models\Post::destroy(2);
-
-    // 5.destroy()：刪除多筆資料
-    \App\Models\Post::destroy([3, 5, 7]);
-
-    return '已刪除，在 MySQL 查看結果';
+Route::get('/all-posts', function () {
+    $allPosts = \App\Models\Post::all();
+    dd($allPosts); // 顯示所有貼文資料（Collection）
 });
