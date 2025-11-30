@@ -67,11 +67,22 @@ Route::get('/show-all-posts', function () {
     dd($posts);  // dump 所有資料並停止程式
 });
 
-Route::get('/post-filter', function () {
+//Route::get('/post-filter', function () {
+//
+//    $posts = Post::where('id', '<', 10)
+//        ->orderBy('id', 'DESC')
+//        ->get();
+//
+//    dd($posts);
+//});
 
-    $posts = Post::where('id', '<', 10)
-        ->orderBy('id', 'DESC')
-        ->get();
+Route::get('/update-post', function () {
+    $post = Post::find(1);
 
-    dd($posts);
+    $post->update([
+        'title' => 'updated title',
+        'content' => 'updated content',
+    ]);
+
+    return '更新成功！';
 });
