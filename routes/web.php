@@ -114,7 +114,14 @@ Route::get('/show-all-posts', function () {
 //    return '已刪除，在 MySQL 查看結果';
 //});
 
-Route::get('/all-posts', function () {
-    $allPosts = \App\Models\Post::all();
-    dd($allPosts); // 顯示所有貼文資料（Collection）
+//Route::get('/all-posts', function () {
+//    $allPosts = \App\Models\Post::all();
+//    dd($allPosts); // 顯示所有貼文資料（Collection）
+//});
+
+Route::get('/featured-posts', function () {
+
+    $featuredPosts = Post::where('is_feature', 1)->get();
+    dd($featuredPosts);
+
 });
