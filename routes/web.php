@@ -119,9 +119,16 @@ Route::get('/show-all-posts', function () {
 //    dd($allPosts); // 顯示所有貼文資料（Collection）
 //});
 
-Route::get('/featured-posts', function () {
+//Route::get('/featured-posts', function () {
+//
+//    $featuredPosts = Post::where('is_feature', 1)->get();
+//    dd($featuredPosts);
+//
+//});
 
-    $featuredPosts = Post::where('is_feature', 1)->get();
-    dd($featuredPosts);
+Route::get('/find-4', function () {
+
+    $fourthPost = Post::find(4);
+    dd($fourthPost);
 
 });
