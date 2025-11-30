@@ -76,13 +76,24 @@ Route::get('/show-all-posts', function () {
 //    dd($posts);
 //});
 
-Route::get('/update-post', function () {
-    $post = Post::find(1);
+//Route::get('/update-post', function () {
+//    $post = Post::find(1);
+//
+//    $post->update([
+//        'title' => 'updated title',
+//        'content' => 'updated content',
+//    ]);
+//
+//    return '更新成功！';
+//});
 
-    $post->update([
-        'title' => 'updated title',
-        'content' => 'updated content',
-    ]);
+Route::get('/update-post-save', function () {
 
-    return '更新成功！';
+    $post = \App\Models\Post::find(1);
+
+    $post->title = 'saved title';
+    $post->content = 'saved content';
+    $post->save();
+
+    return '使用 save() 更新成功！';
 });
