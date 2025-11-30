@@ -15,4 +15,10 @@ class Post extends Model
         'content',
         'is_feature',
     ];
+
+    // 讓 Post 能抓到所有它的評論（多筆）
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
 }

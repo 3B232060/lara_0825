@@ -52,20 +52,20 @@ use App\Models\Post;
 //    dd($post); // 顯示完整貼文資訊並停止
 //});
 
-Route::get('/show-all-posts', function () {
-
-    $posts = Post::all(); // 撈出所有貼文
-
-    foreach ($posts as $post){
-        echo '編號：'.$post->id.'<br>';
-        echo '標題：'.$post->title.'<br>';
-        echo '內容：'.$post->content.'<br>';
-        echo '張貼時間：'.$post->created_at.'<br>';
-        echo '------------------------------'.'<br>';
-    }
-
-    dd($posts);  // dump 所有資料並停止程式
-});
+//Route::get('/show-all-posts', function () {
+//
+//    $posts = Post::all(); // 撈出所有貼文
+//
+//    foreach ($posts as $post){
+//        echo '編號：'.$post->id.'<br>';
+//        echo '標題：'.$post->title.'<br>';
+//        echo '內容：'.$post->content.'<br>';
+//        echo '張貼時間：'.$post->created_at.'<br>';
+//        echo '------------------------------'.'<br>';
+//    }
+//
+//    dd($posts);  // dump 所有資料並停止程式
+//});
 
 //Route::get('/post-filter', function () {
 //
@@ -133,9 +133,27 @@ Route::get('/show-all-posts', function () {
 //
 //});
 
-Route::get('/last-post', function () {
+//Route::get('/last-post', function () {
+//
+//    $lastPost = Post::orderBy('id', 'DESC')->first();
+//    dd($lastPost);
+//
+//});
 
-    $lastPost = Post::orderBy('id', 'DESC')->first();
-    dd($lastPost);
+// 找到貼文，列出留言
+Route::get('/test-post-comments', function () {
+
+    $post = Post::find(6);
+
+    echo '標題：' . $post->title . '<br>';
+    echo '內容：' . $post->content . '<br>';
+    echo '--------------------<br>';
+
+    $comments = $post->comments()->get();
+
+    foreach ($comments as $comment) {
+        echo '留言：' . $comment->content . "<br>";
+        echo '------------------------------------------------<br>';
+    }
 
 });
