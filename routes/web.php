@@ -87,13 +87,29 @@ Route::get('/show-all-posts', function () {
 //    return '更新成功！';
 //});
 
-Route::get('/update-post-save', function () {
+//Route::get('/update-post-save', function () {
+//
+//    $post = \App\Models\Post::find(1);
+//
+//    $post->title = 'saved title';
+//    $post->content = 'saved content';
+//    $post->save();
+//
+//    return '使用 save() 更新成功！';
+//});
 
+Route::get('/delete-post', function () {
+    // 1.delete()：刪除單筆資料
     $post = \App\Models\Post::find(1);
+    if ($post) {
+        $post->delete();
+    }
 
-    $post->title = 'saved title';
-    $post->content = 'saved content';
-    $post->save();
+    // 3.destroy()：直接刪除某個 id 的資料
+    \App\Models\Post::destroy(2);
 
-    return '使用 save() 更新成功！';
+    // 5.destroy()：刪除多筆資料
+    \App\Models\Post::destroy([3, 5, 7]);
+
+    return '已刪除，在 MySQL 查看結果';
 });
